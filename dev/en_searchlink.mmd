@@ -1,0 +1,21 @@
+Wikify
+
+Use a syntax similar to [Brett Terpstra's SearchLink](http://brettterpstra.com/projects/searchlink/) for easy wiki-creation of [Evernote](https://evernote.com/) notes. There will be two-types of wiki-links:
+
+1. links to pre-existing notes
+2. links to soon-to-be-created notes
+
+The syntax for the latter type will follow [standard wiki syntax](http://en.wikipedia.org/wiki/Wiki_markup). In order to link to soon-to-be-created notes, users need only wrap some text in double brackets (i.e. `[[title of new note]]`). The text within the double brackets will become the title of a new Evernote note, created in the same notebook as the note being composed.
+
+For linking to pre-existing Evernote notes, `Wikify` provides a simple, yet flexible syntax that builds upon [Markdown](https://daringfireball.net/projects/markdown/) and [SearchLink](http://brettterpstra.com/projects/searchlink/). The simplest form will search the user's entire Evernote library for a title match: `[search term](!en)`. If the user wishes to limit the scope of the search, two further flags are available: `=[notebook]` or `@[tag]`. If either or both of these flags are present, `Wikify` will only search for title matches in the specified notebook and/or with the specified tag. 
+
+**Examples**
+
+* General Query: `[search term](!en)`
+* Notebook-Limited Query: `[search term](!en =inbox)`
+* Tag-Limited Query: `[search term](!en @wiki)`
+* Notebook- and Tag-Limited Query: `[search term](!en =inbox @wiki)`
+
+>Note, the search term, notebook name, and tag name can all be multiple words, and there is no required ordering of notebook and tag if both are included. 
+
+
