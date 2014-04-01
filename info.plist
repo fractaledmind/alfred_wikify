@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.hackademic.wikify</string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>4F5E2502-7B96-4FAD-8250-E76B00EB8509</key>
@@ -50,6 +52,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>AB08C91F-49C4-4C8B-9F4F-B72E3E2836C4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FCEDF883-A20C-4D34-928C-7971AE239730</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>AC95C048-A40A-4BF9-9FCE-CFEF13EC82FB</key>
 		<array>
 			<dict>
@@ -61,13 +74,26 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>AD123E61-124D-486E-9563-A59A5EAA4654</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>831CF576-B428-490A-9A27-FC433C157C89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>BC310BF1-1A26-40D5-92CE-0CC8B8E68E5F</key>
+		<array/>
+		<key>FCEDF883-A20C-4D34-928C-7971AE239730</key>
 		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>Stephen Margheim</string>
 	<key>description</key>
-	<string>Your little Wiki-Helper</string>
+	<string>Your Evernote Wiki-Helper (v. 1.2)</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -100,23 +126,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>osascript md2en.scpt "{query}"</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>7281644D-C44E-484A-86C8-A379B2D6AE41</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -136,6 +145,23 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>AC95C048-A40A-4BF9-9FCE-CFEF13EC82FB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>osascript md2en.scpt "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7281644D-C44E-484A-86C8-A379B2D6AE41</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -223,24 +249,108 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>escaping</key>
-				<integer>68</integer>
+				<integer>102</integer>
 				<key>keyword</key>
-				<string>vp</string>
+				<string>en:t</string>
 				<key>script</key>
-				<string>run script (POSIX file ((do shell script "pwd") &amp; "/filter_voodoopad.scpt")) with parameters {"{query}", "Choose Other"}</string>
+				<string>python test.py "workflow:datasize"</string>
 				<key>title</key>
-				<string>Search VoodooPad</string>
+				<string>Testing</string>
 				<key>type</key>
-				<integer>6</integer>
+				<integer>0</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>CBD9146E-78F3-443D-8B80-C36548F842E1</string>
+			<string>1C1A2244-39A1-46D7-AA70-70AC4E0A7E44</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>AD123E61-124D-486E-9563-A59A5EAA4654</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python en_searchlink.py "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>831CF576-B428-490A-9A27-FC433C157C89</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python text_expans.py "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FCEDF883-A20C-4D34-928C-7971AE239730</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>AB08C91F-49C4-4C8B-9F4F-B72E3E2836C4</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -249,6 +359,11 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>1C1A2244-39A1-46D7-AA70-70AC4E0A7E44</key>
+		<dict>
+			<key>ypos</key>
+			<real>290</real>
+		</dict>
 		<key>4F5E2502-7B96-4FAD-8250-E76B00EB8509</key>
 		<dict>
 			<key>ypos</key>
@@ -264,30 +379,45 @@
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>831CF576-B428-490A-9A27-FC433C157C89</key>
+		<dict>
+			<key>ypos</key>
+			<real>390</real>
+		</dict>
 		<key>96DE2091-A6FE-4FB3-90BB-E629C3CB4F45</key>
 		<dict>
 			<key>ypos</key>
 			<real>60</real>
+		</dict>
+		<key>AB08C91F-49C4-4C8B-9F4F-B72E3E2836C4</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
 		</dict>
 		<key>AC95C048-A40A-4BF9-9FCE-CFEF13EC82FB</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>AD123E61-124D-486E-9563-A59A5EAA4654</key>
+		<dict>
+			<key>ypos</key>
+			<real>390</real>
+		</dict>
 		<key>BC310BF1-1A26-40D5-92CE-0CC8B8E68E5F</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
-		<key>CBD9146E-78F3-443D-8B80-C36548F842E1</key>
-		<dict>
-			<key>ypos</key>
-			<real>300</real>
-		</dict>
 		<key>E67CD1F4-6183-48A4-9CD1-267CCEB0D9BB</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>FCEDF883-A20C-4D34-928C-7971AE239730</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
