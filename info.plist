@@ -124,11 +124,11 @@
 	<key>createdby</key>
 	<string>Stephen Margheim</string>
 	<key>description</key>
-	<string>Your Evernote Wiki-Helper (v. 2.0)</string>
+	<string>Your Evernote Wiki-Helper (v. 2.1)</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>EN-Wikify</string>
+	<string>Wikify</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -171,13 +171,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>AC95C048-A40A-4BF9-9FCE-CFEF13EC82FB</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -232,13 +234,19 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.evernote.Evernote</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>68E407F6-16C7-4052-88E3-A61887042CAA</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -293,13 +301,19 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.evernote.Evernote</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>7757919E-0E78-470D-8E44-9CDC1FF9ACCF</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -326,7 +340,7 @@
 				<key>keyword</key>
 				<string>ensel</string>
 				<key>text</key>
-				<string>Create new note from current selection</string>
+				<string>Create new Note from current selection</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -362,22 +376,28 @@
 				<key>argument</key>
 				<integer>0</integer>
 				<key>hotkey</key>
-				<integer>0</integer>
+				<integer>26</integer>
 				<key>hotmod</key>
-				<integer>0</integer>
+				<integer>1179648</integer>
 				<key>hotstring</key>
-				<string></string>
+				<string>7</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
 				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.evernote.Evernote</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>F30D7BC8-F341-46A6-883E-038876A595D8</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -386,8 +406,6 @@
 				<integer>2</integer>
 				<key>keyword</key>
 				<string>wfy</string>
-				<key>subtext</key>
-				<string>Link to pre-existing Evernote notes</string>
 				<key>text</key>
 				<string>Wikify selected Evernote notes</string>
 				<key>withspace</key>
@@ -406,7 +424,7 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>osascript test.scpt</string>
+				<string>osascript pkg_installer.scpt</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

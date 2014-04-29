@@ -96,14 +96,14 @@ def get_metadata(_str, _origin):
 
     if _str.startswith('Title: ') or _str.startswith('# '):
         title_meta = _str.split(_delim, 1)[0]
-        en_title = title_meta.split(' ', 1)[1]
+        en_title = title_meta.split(' ', 1)[1].strip()
         _str = _str.replace(title_meta + _delim, '')
     else:
         en_title = time.strftime("%d-%m-%Y")
 
     if _str.startswith('Notebook: ') or _str.startswith('= '):
         nb_meta = _str.split(_delim, 1)[0]
-        en_nb = nb_meta.split(' ', 1)[1]
+        en_nb = nb_meta.split(' ', 1)[1].strip()
         _str = _str.replace(nb_meta + _delim, '')
     else:
         en_nb = as_run("""tell application id "com.evernote.Evernote" to """ \
@@ -111,7 +111,7 @@ def get_metadata(_str, _origin):
 
     if _str.startswith('Tags: ') or _str.startswith('@ '):
         tag_meta = _str.split(_delim, 1)[0]
-        en_tags = tag_meta.split(' ', 1)[1]
+        en_tags = tag_meta.split(' ', 1)[1].strip()
         en_tags = en_tags.split(', ')
         _str = _str.replace(tag_meta + _delim, '')
     else:
@@ -273,13 +273,14 @@ def _new_wikis(_list, _nb):
 def wikify_new(_txt, meta_data):
     """Create and link to new notes"""
     wiki_list = re.findall(r"\[\[(.*?)\]\]", _txt)
-    md_links = _new_wikis(wiki_list, meta_data['notebook'])
+    if len(wiki_list) > 0:
+        md_links = _new_wikis(wiki_list, meta_data['notebook'])
 
-    if len(wiki_list) == len(md_links):
-        for i, lnk in enumerate(md_links):
-            find = '[[' + wiki_list[i] + ']]'
-            _txt = _txt.replace(find, lnk)
-        return _txt
+        if len(wiki_list) == len(md_links):
+            for i, lnk in enumerate(md_links):
+                find = '[[' + wiki_list[i] + ']]'
+                _txt = _txt.replace(find, lnk)
+    return _txt
 
 
 ##################################################
@@ -304,18 +305,35 @@ def get_input(wf):
 
 def main(wf):
     """Primary Function"""
+    
     # Get input text
     _str = get_input(wf)
+    #_str = get_clipboard()
+
     # Process and extract metadata
     str_dict = get_metadata(_str['str'], _str['source'])
+    #str_dict = get_metadata(_str, 'clipboard')
+    #print str_dict         VERBOSE
+    #print '- - -\n\n'      VERBOSE
+
     # Expand any in-text snippets
     new_str = expand_snippets(str_dict['text'])
+    #print new_str          VERBOSE
+    #print '- - -\n\n'      VERBOSE
+
     # Wiki-link to any matched pre-existing EN notes
     linked_str = wikify_old(new_str)
+    #print linked_str       VERBOSE
+    #print '- - -\n\n'      VERBOSE
+
     # Wiki-link to any marked new EN notes
     wiki_str = wikify_new(linked_str, str_dict)
+    #print wiki_str         VERBOSE
+    #print '- - -\n\n'      VERBOSE
+
     # Convert MD to HTML
     html_str = markdown.markdown(wiki_str)
+    
     # Create new HTML Evernote note
     create_scpt = CREATE_NOTE.format(
             nb=_applescriptify_str(str_dict['notebook']),
